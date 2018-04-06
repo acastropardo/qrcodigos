@@ -16,6 +16,18 @@ app.get('/', function(req, res) {
 
 
 	var texto = req.query.texto; 
+
+
+	QRCode.toFileStream(file, texto);
+
+		res.setHeader('Content-Length', stat.size);
+		res.setHeader('Content-Type', 'image/png');
+		//res.setHeader('Content-Disposition', 'attachment; filename='+archivo);
+		file.pipe(res);
+	
+
+
+	/*
 	QRCode.toFile('./qr.png', texto, {
   scale: '8'
   // color: {
@@ -27,7 +39,7 @@ app.get('/', function(req, res) {
   if (err) throw err
   console.log('done')
 
- var archivo = './qr.png';
+ 	var archivo = './qr.png';
 
 	if (fs.existsSync(archivo)) {
 		//console.log(archivo);
@@ -39,13 +51,13 @@ app.get('/', function(req, res) {
 	
 	res.setHeader('Content-Length', stat.size);
 	res.setHeader('Content-Type', 'image/png');
-	res.setHeader('Content-Disposition', 'attachment; filename='+archivo);
+	//res.setHeader('Content-Disposition', 'attachment; filename='+archivo);
 	file.pipe(res);
 
 	}
 	console.log(archivo);
 })
-
+*/
 
 	
 
