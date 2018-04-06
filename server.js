@@ -17,15 +17,15 @@ app.get('/', function(req, res) {
 
 	var texto = req.query.texto; 
 	QRCode.toFile('./qr.png', texto, {
-  scale: '8',
-  color: {
-    dark: '#00F',  // Blue dots
-    light: '#0000', // Transparent background
-    // escala
-  }
+  scale: '8'
+  // color: {
+  //   dark: '#ffffff',  // Blue dots
+  //   light: '#0000', // Transparent background
+  //   // escala
+  // }
 }, function (err) {
   if (err) throw err
-  //console.log('done')
+  console.log('done')
 
  var archivo = './qr.png';
 
@@ -37,12 +37,13 @@ app.get('/', function(req, res) {
 
 	//console.log(stat.size);
 	
-	//res.setHeader('Content-Length', stat.size);
+	res.setHeader('Content-Length', stat.size);
 	res.setHeader('Content-Type', 'image/png');
-	//res.setHeader('Content-Disposition', 'attachment; filename='+archivo);
+	res.setHeader('Content-Disposition', 'attachment; filename='+archivo);
 	file.pipe(res);
 
 	}
+	console.log(archivo);
 })
 
 
