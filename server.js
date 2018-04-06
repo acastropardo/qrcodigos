@@ -18,16 +18,10 @@ app.get('/', function(req, res) {
 	var texto = req.query.texto; 
 
 
-	QRCode.toFileStream(file, texto);
-
-		res.setHeader('Content-Length', stat.size);
-		res.setHeader('Content-Type', 'image/png');
-		//res.setHeader('Content-Disposition', 'attachment; filename='+archivo);
-		file.pipe(res);
 	
 
 
-	/*
+	
 	QRCode.toFile('./qr.png', texto, {
   scale: '8'
   // color: {
@@ -57,7 +51,7 @@ app.get('/', function(req, res) {
 	}
 	console.log(archivo);
 })
-*/
+
 
 	
 
