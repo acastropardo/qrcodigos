@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
 
 	
 	QRCode.toFile('./qr.png', texto, {
-  scale: '8'
+  scale: '12'
   // color: {
   //   dark: '#ffffff',  // Blue dots
   //   light: '#0000', // Transparent background
@@ -45,6 +45,7 @@ app.get('/', function(req, res) {
 	
 	res.setHeader('Content-Length', stat.size);
 	res.setHeader('Content-Type', 'image/png');
+	res.setHeader('access-control-allow-origin', '*');
 	//res.setHeader('Content-Disposition', 'attachment; filename='+archivo);
 	file.pipe(res);
 
